@@ -11,7 +11,8 @@ module.exports={
 	edit:function(id,data){
 		return Todo.update({_id:id},{$set:data}).exec();
 	},
-	remove:function(id){
-		return Todo.remove({_id:id}).exec();
+	remove:function(ids){
+		var idArr=ids.split(",");
+		return Todo.remove({_id:{"$in":idArr}}).exec();
 	}
 }

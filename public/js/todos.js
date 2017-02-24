@@ -93,13 +93,13 @@ function todos() {
 		}
 
 	};
-	function deleteCommit(_id){
+	function deleteCommit(_ids){
 		var _url='../remove';
 		var _requestId = _j._$request(_url, {
 			sync: false,
 			type: 'json',
 			method: 'post',
-			data:{id:_id},
+			data:{id:_ids},
 			mode: 0,
 			onload: function(_data) {
 				// 正常回调处理
@@ -288,6 +288,11 @@ function todos() {
 	 */
 	 function onClickDeleteDone(_event) {
 	 	var _checkedItems = getCheckedItems();
+	 	var ids=[];
+	 	_checkedItems.forEach(function(item){
+	 		ids.push(item._todoId);
+	 	})
+	 	deleteCommit(ids.join(","));
 	 	if (_checkedItems.length) {
 	 		_p._$$todoItem._$recycle(_checkedItems);
 	 	}
