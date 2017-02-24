@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="/css/common.css">
+	<link rel="stylesheet" href="/css/core.css">
+</head>
+
+<body>
+	<% if (success) { %>
+	<div class="top-msg-box">
+			<p><%= success %></p>
+	</div>
+	<% } %>
+	<div id="todo">
+		<div class="todo-box">
+			<h1 class="title">工作簿</h1>
+			<div class="todo-add"><input id="newContent" type="text"><input id="addItem" type="button" value="增加"></div>
+			<ul class="todo-list" id="todo-list">
+				<li class="showBlock"><input type="checkBox" checked=false id="markDone"><span class="markDone">全选</span></li>
+			</ul>
+			<div class="todo-state">
+				<span class="todo-reamin" id="todo-reamin"></span>
+				<span class="clear-done" id="clearDone">清除已经完成</span>
+			</div>
+		</div>
+	</div>
+	<script>
+		var todos=[];
+		<% list.forEach(function(todo){ %>
+			var id='<%=todo._id%>';
+			var content='<%=todo.content%>';
+			var done=<%=todo.done%>;
+			todos.push({id:id,content:content,done:done});
+		<% }) %>
+	</script>
+	<script src="js/nej/define.js"></script>
+	<script src="js/todos.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>

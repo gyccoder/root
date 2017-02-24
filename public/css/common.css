@@ -1,0 +1,116 @@
+body{
+	font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+html {overflow-y:scroll;} 
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,blockquote,p,section,footer,header,span{padding:0; margin:0;} 
+table,td,tr,th{font-size:12px;} 
+li{list-style-type:none;} 
+img{vertical-align:top;border:0;} 
+ol,ul {list-style:none;} 
+address,cite,code,em,th {font-weight:normal; font-style:normal;} 
+.login-container{
+	margin:50px auto;
+}
+.title{
+	height: 80px;
+	vertical-align: middle;
+	text-align: center;
+	margin:0 auto;
+	padding-top: 10px;
+	color: #2d3b55
+}
+.login-container{
+	width: 500px;
+	height: 350px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px #333;
+	position: relative;
+}
+.txt{
+	border: none;
+	border-bottom: 1px solid #d3d3d3;
+	width: 300px;
+	display: block;
+	margin: 15px auto;
+}
+.toolbar{
+	width: 300px;
+	margin: 10px auto;
+}
+.btn{
+	float: right;
+	width: 100px;
+	height: 40px;
+	vertical-align: middle;
+	text-align: center;
+	border: 1px solid #ddd;
+	border-radius: 20px;
+	cursor: pointer;
+
+}
+.card{
+	width: 0%;
+	height: 200px;
+	float: left;
+	overflow: hidden;
+}
+.active-card{
+	width: 100%;
+}
+footer .tab{
+	float: left;
+	width: 50%;
+	height:60px;
+	background: #ddd;
+	text-align: center;
+	line-height: 60px
+}
+footer .active-tab{
+	background: #2d3b55;
+	color: #fff
+}
+footer .tab:nth-child(1){
+	border-bottom-left-radius: 5px
+}
+footer .tab:nth-child(2){
+	border-bottom-right-radius: 5px
+}
+.top-msg-box {
+	width: 150px;
+	top: 36px;
+	right: 0px;
+	position: absolute;
+	z-index: 9998;
+	color: #333;
+	border: 1px solid #ffeebb;
+	border-radius: 0 0 3px 3px;
+	padding: 6px 2px;
+	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.1);
+	background: #fff9e0;
+	background: rgba(255, 249, 224, 0.94);
+	animation:moveout 4s;
+	animation-fill-mode:forwards;
+}
+.top-msg-box{
+	font: 12px/1.3 'Arial','Microsoft YaHei';
+	font-size: 12px;
+}
+.top-msg-box p{
+	margin: 5px 15px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+@keyframes moveout{
+	0%{
+		width: 150px;
+		opacity: 1;
+	}
+	50%{
+		width: 150px;
+		opacity: 1;
+	}
+	100%{
+		width: 0;
+		opacity: 0;
+	}
+}

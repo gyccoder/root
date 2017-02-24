@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Todo-Login</title>
+	<link rel="stylesheet" href="/css/common.css">
+</head>
+<body>
+	<% if (error) { %>
+	<div class="top-msg-box">
+			<p><%= error %></p>
+	</div>
+	<% } %>
+	<div class="login-container">
+		<header class="title">
+			<h1>LOGIN</h1>
+		</header>
+		<section class="card <% if(channel&&channel=='login'){%>active-card<%}%>" id="">
+			<form action="../login" method="post">
+				<input type="text" class="txt" placeholder="your name"  name="name">
+				<input type="password" class="txt" placeholder="your password"  name="password">
+				<div class="toolbar">
+					<input type="submit" class="btn" value="singn up">
+				</div>			
+			</form>
+		</section>
+		<section class="card <% if(channel&&channel=='register'){%>active-card<%}%>" id="">
+			<form action="../register" method="post">
+				<input type="text" class="txt" placeholder="your name" name="name">
+				<input type="password" class="txt" placeholder="your password" name="password">
+				<div class="toolbar">
+					<input type="submit" class="btn" value="register">
+				</div>	
+			</form>
+		</section>
+		<footer>
+			<ul>
+				<li class="tab <% if(channel&&channel=='login'){%>active-tab<%}%>">login</li>
+				<li class="tab <% if(channel&&channel=='register'){%>active-tab<%}%>">register</li>
+			</ul>	
+		</footer>
+	</div>
+	<script type="text/javascript" src="/js/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="/js/base.js"></script>
+</body>
+</html>
