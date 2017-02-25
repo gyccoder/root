@@ -1,12 +1,12 @@
 var express = require('express');
 var app = express();
 var router=require('./router/index');
-var config=require('./config/base');
 var path=require('path');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
+var config=require('./config/base');
 var flash = require('connect-flash');
-var bodyParser=require("body-parser"); 
+var bodyParser=require("body-parser");
 
 // set the tempelate dir
 app.set('views', path.join(__dirname, 'views'));
@@ -23,9 +23,9 @@ app.use(session({
     maxAge: 2592000000// 过期时间，过期后 cookie 中的 session id 自动删除
   },
   store: new MongoStore({// 将 session 存储到 mongodb
-    url:'mongodb://localhost:27017/ycNej'// mongodb 地址
+    url:config.mongo// mongodb 地址
   }),
-  resave: true, 
+  resave: true,
   saveUninitialized: true
 }));
 app.use(flash());

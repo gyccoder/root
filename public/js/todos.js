@@ -144,6 +144,9 @@ function todos() {
 		//update the data in db
 		updateCommit({id:this._todoId,content:this._todoEdit.value});
 	};
+	/**
+	 *更新操作提交到数据库
+	 */
 	function updateCommit(_data){
 		var _url='../edit';
 		var _requestId = _j._$request(_url, {
@@ -185,10 +188,14 @@ function todos() {
 			parent: _todoList,
 			oncheck: onCheck
 		});
-		for (i = 0; i < _data.length; i++) {
-			if (_data[i].done == false) {
-				_doneAll = false;
-				break;
+		if(_data.length==0){
+			_doneAll=false;
+		}else{
+			for (i = 0; i < _data.length; i++) {
+				if (_data[i].done == false) {
+					_doneAll = false;
+					break;
+				}
 			}
 		}
 		_e._$get('markDone').checked = _doneAll;
@@ -198,7 +205,9 @@ function todos() {
 		_v._$addEvent('clearDone', 'click', onClickDeleteDone);
 
 	}
-
+	/**
+	 *前端进行项目的增加操作
+	 */
 	function _addItem() {
 		var _todoList = _e._$get('todo-list');
 		var content = _e._$get("newContent").value;
@@ -210,11 +219,16 @@ function todos() {
 			parent: _todoList,
 			oncheck: onCheck
 		});
+		//提交到数据库
 		saveCommit(appendItem[0],item);
 		todoItems = todoItems.concat(appendItem);
+		//新增后一定会有待完成的项目
 		_e._$get("todo-reamin").innerText = parseInt(_e._$get("todo-reamin").innerText.substr(0, 1)) + 1 + "项待办工作";
 		_e._$get('markDone').checked = false;
 	}
+	/**
+	 *数据库中进行保存的操作
+	 */
 	function saveCommit(item,_data){
 		var _url='../save';
 		var _requestId = _j._$request(_url, {
@@ -292,11 +306,14 @@ function todos() {
 	 	_checkedItems.forEach(function(item){
 	 		ids.push(item._todoId);
 	 	})
-	 	deleteCommit(ids.join(","));
+	 	//回收todo项并从数据库中剔除
 	 	if (_checkedItems.length) {
 	 		_p._$$todoItem._$recycle(_checkedItems);
 	 	}
+		deleteCommit(ids.join(","));
 	 	todoItems = getUnCheckedItems();
+		//把全选的勾去掉
+		 _e._$get('markDone').checked=false;
 	 }
 	/**
 	 * 点击"全选"复选框的响应函数
@@ -311,7 +328,7 @@ function todos() {
 	 }
 	/**
 	 * 生成新的UUID
-	 * 
+	 *
 	 */
 	 function generateUUID() {
 	 	var d = new Date().getTime();
@@ -322,7 +339,9 @@ function todos() {
 	 	});
 	 	return uuid;
 	 };
-
+	 /**
+ 	 *数据库中进行保存的操作
+ 	 */
 	 function loadData() {
 	 	var _url='../list';
 	 	var _requestId = _j._$request(_url, {

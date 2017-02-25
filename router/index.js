@@ -1,4 +1,3 @@
-var welcome=require('./welcome');
 var login=require('./login');
 var regist=require('./regist');
 var save=require('./save');
@@ -8,7 +7,6 @@ var edit=require('./edit');
 var todo=require('./todo');
 
 module.exports=function(app){
-	app.use('/',welcome);
 	app.use('/login', login);
 	app.use('/register', regist);
 	app.use('/save',save);
